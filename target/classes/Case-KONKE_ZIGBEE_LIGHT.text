@@ -1,0 +1,3 @@
+-SwitchOpt
+    -bool
+        -true,false

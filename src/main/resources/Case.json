@@ -1,0 +1,71 @@
+{
+  "KONKE_ZIGBEE_LIGHT": {
+    "SwitchOpt": {
+      "on": [
+        true,
+        false
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_CHOPIN_LIGHT_PROJECT": {
+    "SwitchOpt": {
+      "on": [
+        true,
+        false
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_CHOPIN_LIGHT_CUSTOM": {
+    "SwitchOpt": {
+      "on": [
+        true,
+        false
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_STAR_LIGHT": {
+    "SwitchOpt": {
+      "on": [
+        true,
+        false
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_ZEROFIREWIRE_DIMMER": {
+    "SwitchOpt": {
+      "on": [
+        true,
+        false
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_CHOPIN_DIMMER_LIGHT": {
+    "SwitchOpt": {
+      "on": [
+        true,
+        false
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_ZEROFIREWIRE_DIMMER_2G": {
+    "SwitchOpt": {
+      "on": [
+        true,
+        false
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_RGBW_LIGHTSTRIP": {
+    "SwitchOpt": {
+      "on": [
+        true,
+        false
+      ]
+    },
+    "DimmerAdjustLuminance": {
+      "progress": {
+
+      }
+    }
+  }
+}

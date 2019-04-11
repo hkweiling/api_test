@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [单个主机设备状态查询]" parallel="classes">
+  <listeners>
+    <listener class-name="com.rest.autotest.listener.FailedRetryListener"/>
+  </listeners>
+  <test name="设备状态查询接口测试(failed)" parallel="classes">
+    <classes>
+      <class name="com.rest.autotest.http.GetDeviceStatus">
+        <methods>
+          <include name="getDeviceStatus" invocation-numbers="3 6 36 42 47 5 65 75 97 106 118 119 122 120 129 126 137 145"/>
+        </methods>
+      </class> <!-- com.rest.autotest.http.GetDeviceStatus -->
+    </classes>
+  </test> <!-- 设备状态查询接口测试(failed) -->
+</suite> <!-- Failed suite [单个主机设备状态查询] -->

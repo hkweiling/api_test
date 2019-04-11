@@ -1,0 +1,1882 @@
+{
+  "KONKE_ZIGBEE_LIGHT": {
+    "desc": "普通灯",
+    "SwitchOpt": {
+      "desc": "开关",
+      "request": [
+        {
+          "desc": "参数:开/关",
+          "key": "on",
+          "type": "bool"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_CHOPIN_LIGHT_PROJECT": {
+    "desc": "肖邦工程版灯",
+    "SwitchOpt": {
+      "desc": "开关",
+      "request": [
+        {
+          "desc": "参数:开/关",
+          "key": "on",
+          "type": "bool"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_CHOPIN_LIGHT_CUSTOM": {
+    "desc": "肖邦定制版灯",
+    "SwitchOpt": {
+      "desc": "开关",
+      "request": [
+        {
+          "desc": "参数:开/关",
+          "key": "on",
+          "type": "bool"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_STAR_LIGHT": {
+    "desc": "星辰灯",
+    "SwitchOpt": {
+      "desc": "开关",
+      "request": [
+        {
+          "desc": "参数:开/关",
+          "key": "on",
+          "type": "bool"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_ZEROFIREWIRE_DIMMER": {
+    "desc": "零火调光灯",
+    "SwitchOpt": {
+      "desc": "开关",
+      "request": [
+        {
+          "desc": "参数:开/关",
+          "key": "on",
+          "type": "bool"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "DimmerAdjustLuminance": {
+      "desc": "调节亮度",
+      "request": [
+        {
+          "desc": "参数:亮度值",
+          "key": "progress",
+          "type": "range",
+          "range": [
+            0,
+            100,
+            1
+          ]
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_CHOPIN_DIMMER_LIGHT": {
+    "desc": "肖邦调光灯",
+    "SwitchOpt": {
+      "desc": "开关",
+      "request": [
+        {
+          "desc": "参数:开/关",
+          "key": "on",
+          "type": "bool"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "DimmerAdjustLuminance": {
+      "desc": "调节亮度",
+      "request": [
+        {
+          "desc": "参数:亮度值",
+          "key": "progress",
+          "type": "range",
+          "range": [
+            0,
+            100,
+            1
+          ]
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetDimmableLightConfig": {
+      "desc": "查询运行参数",
+      "request": [],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "SetDimmableLightConfig": {
+      "desc": "设置运行参数",
+      "request": [
+        {
+          "desc": "参数:渐变时间",
+          "key": "softOnValue",
+          "type": "range",
+          "range": [
+            10,
+            50,
+            10
+          ]
+        },
+        {
+          "desc": "参数:物理亮度最低值",
+          "key": "ilumLowValue",
+          "type": "range",
+          "range": [
+            10,
+            50,
+            1
+          ]
+        },
+        {
+          "desc": "参数:物理亮度最高值",
+          "key": "ilumHighValue",
+          "type": "range",
+          "range": [
+            60,
+            100,
+            1
+          ]
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "DimmerAdjustRealLuminace": {
+      "desc": "调节实际亮度",
+      "request": [
+        {
+          "desc": "参数:亮度值",
+          "key": "progress",
+          "type": "range",
+          "range": [
+            0,
+            100,
+            1
+          ]
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_ZEROFIREWIRE_DIMMER_2G": {
+    "desc": "肖邦调光灯",
+    "SwitchOpt": {
+      "desc": "开关",
+      "request": [
+        {
+          "desc": "参数:开/关",
+          "key": "on",
+          "type": "bool"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "DimmerAdjustLuminance": {
+      "desc": "调节亮度",
+      "request": [
+        {
+          "desc": "参数:亮度值",
+          "key": "progress",
+          "type": "range",
+          "range": [
+            0,
+            100,
+            1
+          ]
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetDimmableLightConfig": {
+      "desc": "查询运行参数",
+      "request": [],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "SetDimmableLightConfig": {
+      "desc": "设置运行参数",
+      "request": [
+        {
+          "desc": "参数:渐变时间",
+          "key": "softOnValue",
+          "type": "range",
+          "range": [
+            10,
+            50,
+            10
+          ]
+        },
+        {
+          "desc": "参数:物理亮度最低值",
+          "key": "ilumLowValue",
+          "type": "range",
+          "range": [
+            10,
+            90,
+            1
+          ]
+        },
+        {
+          "desc": "参数:物理亮度最高值",
+          "key": "ilumHighValue",
+          "type": "range",
+          "range": [
+            20,
+            100,
+            1
+          ]
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "DimmerAdjustRealLuminace": {
+      "desc": "调节实际亮度",
+      "request": [
+        {
+          "desc": "参数:亮度值",
+          "key": "progress",
+          "type": "range",
+          "range": [
+            0,
+            100,
+            1
+          ]
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_RGBW_LIGHTSTRIP": {
+    "desc": "RGBW灯带",
+    "SwitchOpt": {
+      "desc": "开关",
+      "request": [
+        {
+          "desc": "参数:开/关",
+          "key": "on",
+          "type": "bool"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "DimmerAdjustLuminance": {
+      "desc": "调节亮度",
+      "request": [
+        {
+          "desc": "参数:亮度值",
+          "key": "progress",
+          "type": "range",
+          "range": [
+            0,
+            100,
+            1
+          ]
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "DimmerAdjustColor": {
+      "desc": "调节色彩",
+      "request": [
+        {
+          "desc": "参数： rgb 值",
+          "key": "rgb",
+          "type": "array",
+          "array": {
+            "len": 3,
+            "type": "range",
+            "range": "[0,255,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "DimmerAdjustWhiteLuminance": {
+      "desc": "调节白光亮度",
+      "request": [
+        {
+          "desc": "参数： 白光亮度值 0-100",
+          "key": "progress",
+          "type": "range",
+          "range": "[0,100,1]"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "DimmerSetPickedColorMode": {
+      "desc": "选择精选模式色值",
+      "request": [
+        {
+          "desc": "参数： 模式id值 1-18",
+          "key": "modeId",
+          "type": "range",
+          "range": "[1,18,1]"
+        },
+        {
+          "desc": "参数： rgb 值",
+          "key": "rgb",
+          "type": "array",
+          "array": {
+            "len": 3,
+            "type": "range",
+            "range": "[0,255,1]"
+          }
+        },
+        {
+          "desc": "参数： 亮度值 0-100",
+          "key": "bri",
+          "type": "range",
+          "range": "[0,100,1]"
+        },
+        {
+          "desc": "参数： 白光亮度值 0-100",
+          "key": "whiteBri",
+          "type": "range",
+          "range": "[0,100,1]"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "DimmerSetDynamicColorMode": {
+      "desc": "选择动态模式色值",
+      "request": [
+        {
+          "desc": "参数：模式id值 1-12",
+          "key": "modeId",
+          "type": "range",
+          "range": "[1,12,1]"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_CURTAIN": {
+    "desc": "窗帘面板",
+    "MotorOpt": {
+      "desc": "开关停",
+      "request": [
+        {
+          "desc": "参数:开/关/停",
+          "key": "opt",
+          "type": "enum",
+          "enum": {
+            "type": "str",
+            "str": [
+              "OPEN",
+              "STOP",
+              "CLOSE"
+            ]
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_WISTARMOTOR": {
+    "desc": "威士达电机",
+    "MotorOpt": {
+      "desc": "开关停",
+      "request": [
+        {
+          "desc": "参数:开/关/停",
+          "key": "opt",
+          "type": "enum",
+          "enum": {
+            "type": "str",
+            "str": [
+              "OPEN",
+              "STOP",
+              "CLOSE"
+            ]
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_WindowPusher": {
+    "desc": "推窗面板",
+    "MotorOpt": {
+      "desc": "开关停",
+      "request": [
+        {
+          "desc": "参数:开/关/停",
+          "key": "opt",
+          "type": "enum",
+          "enum": {
+            "type": "str",
+            "str": [
+              "OPEN",
+              "STOP",
+              "CLOSE"
+            ]
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_STAR_CURTAIN": {
+    "desc": "星辰窗帘面板",
+    "MotorOpt": {
+      "desc": "开关停",
+      "request": [
+        {
+          "desc": "参数:开/关/停",
+          "key": "opt",
+          "type": "enum",
+          "enum": {
+            "type": "str",
+            "str": [
+              "OPEN",
+              "STOP",
+              "CLOSE"
+            ]
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_CHOPIN_CURTAIN_PROJECT": {
+    "desc": "肖邦工程版窗帘面板",
+    "MotorOpt": {
+      "desc": "开关停",
+      "request": [
+        {
+          "desc": "参数:开/关/停",
+          "key": "opt",
+          "type": "enum",
+          "enum": {
+            "type": "str",
+            "str": [
+              "OPEN",
+              "STOP",
+              "CLOSE"
+            ]
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_CHOPIN_CURTAIN_CUSTOM": {
+    "desc": "肖邦定制版窗帘面板",
+    "MotorOpt": {
+      "desc": "开关停",
+      "request": [
+        {
+          "desc": "参数:开/关/停",
+          "key": "opt",
+          "type": "enum",
+          "enum": {
+            "type": "str",
+            "str": [
+              "OPEN",
+              "STOP",
+              "CLOSE"
+            ]
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_DooYa": {
+    "desc": "杜亚电机",
+    "MotorOpt": {
+      "desc": "开关停",
+      "request": [
+        {
+          "desc": "参数:开/关/停",
+          "key": "opt",
+          "type": "enum",
+          "enum": {
+            "type": "str",
+            "str": [
+              "OPEN",
+              "STOP",
+              "CLOSE"
+            ]
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "DooyaMotorSeek": {
+      "desc": "拖动操作",
+      "request": [
+        {
+          "desc": "参数:拖动范围",
+          "key": "progress",
+          "type": "range",
+          "range": [
+            0,
+            100,
+            1
+          ]
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "DooyaRouteConfig": {
+      "desc": "行程设置",
+      "request": [],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_K2PRO_SOCKET": {
+    "desc": "K2PRO插座",
+    "SwitchOpt": {
+      "desc": "开关",
+      "request": [
+        {
+          "desc": "参数:开/关",
+          "key": "on",
+          "type": "bool"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "ZigbeeSocketLightSwitch": {
+      "desc": "小夜灯开关",
+      "request": [
+        {
+          "desc": "参数:开/关",
+          "key": "on",
+          "type": "bool"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetDevicePower": {
+      "desc": "查询实时功率",
+      "request": [],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetPowerByDay": {
+      "desc": "按日查询电量",
+      "request": [
+        {
+          "desc": "参数:开始日期",
+          "key": "beginDay",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM-dd",
+            "range": "[-10,0,1]"
+          }
+        },
+        {
+          "desc": "参数:结束日期",
+          "key": "endDay",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM-dd",
+            "range": "[0,0,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetPowerByMonth": {
+      "desc": "按月查询电量",
+      "request": [
+        {
+          "desc": "参数:开始月份",
+          "key": "beginMonth",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM",
+            "range": "[-1,0,1]"
+          }
+        },
+        {
+          "desc": "参数:结束月份",
+          "key": "endMonth",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM",
+            "range": "[0,0,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetPowerByYear": {
+      "desc": "按年查询电量",
+      "request": [
+        {
+          "desc": "参数:开始年份",
+          "key": "beginYear",
+          "type": "date",
+          "date": {
+            "format": "yyyy",
+            "range": "[-1,0,1]"
+          }
+        },
+        {
+          "desc": "参数:结束年份",
+          "key": "endYear",
+          "type": "date",
+          "date": {
+            "format": "yyyy",
+            "range": "[0,0,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_10A_SOCKET": {
+    "desc": "10A插座",
+    "SwitchOpt": {
+      "desc": "开关",
+      "request": [
+        {
+          "desc": "参数:开/关",
+          "key": "on",
+          "type": "bool"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetDevicePower": {
+      "desc": "查询实时功率",
+      "request": [],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetPowerByDay": {
+      "desc": "按日查询电量",
+      "request": [
+        {
+          "desc": "参数:开始日期",
+          "key": "beginDay",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM-dd",
+            "range": "[-10,0,1]"
+          }
+        },
+        {
+          "desc": "参数:结束日期",
+          "key": "endDay",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM-dd",
+            "range": "[0,0,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetPowerByMonth": {
+      "desc": "按月查询电量",
+      "request": [
+        {
+          "desc": "参数:开始月份",
+          "key": "beginMonth",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM",
+            "range": "[-1,0,1]"
+          }
+        },
+        {
+          "desc": "参数:结束月份",
+          "key": "endMonth",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM",
+            "range": "[0,0,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetPowerByYear": {
+      "desc": "按年查询电量",
+      "request": [
+        {
+          "desc": "参数:开始年份",
+          "key": "beginYear",
+          "type": "date",
+          "date": {
+            "format": "yyyy",
+            "range": "[-1,0,1]"
+          }
+        },
+        {
+          "desc": "参数:结束年份",
+          "key": "endYear",
+          "type": "date",
+          "date": {
+            "format": "yyyy",
+            "range": "[0,0,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_16A_SOCKET": {
+    "desc": "16A插座",
+    "SwitchOpt": {
+      "desc": "开关",
+      "request": [
+        {
+          "desc": "参数:开/关",
+          "key": "on",
+          "type": "bool"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetDevicePower": {
+      "desc": "查询实时功率",
+      "request": [],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetPowerByDay": {
+      "desc": "按日查询电量",
+      "request": [
+        {
+          "desc": "参数:开始日期",
+          "key": "beginDay",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM-dd",
+            "range": "[-10,0,1]"
+          }
+        },
+        {
+          "desc": "参数:结束日期",
+          "key": "endDay",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM-dd",
+            "range": "[0,0,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetPowerByMonth": {
+      "desc": "按月查询电量",
+      "request": [
+        {
+          "desc": "参数:开始月份",
+          "key": "beginMonth",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM",
+            "range": "[-1,0,1]"
+          }
+        },
+        {
+          "desc": "参数:结束月份",
+          "key": "endMonth",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM",
+            "range": "[0,0,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetPowerByYear": {
+      "desc": "按年查询电量",
+      "request": [
+        {
+          "desc": "参数:开始年份",
+          "key": "beginYear",
+          "type": "date",
+          "date": {
+            "format": "yyyy",
+            "range": "[-1,0,1]"
+          }
+        },
+        {
+          "desc": "参数:结束年份",
+          "key": "endYear",
+          "type": "date",
+          "date": {
+            "format": "yyyy",
+            "range": "[0,0,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_CHOPIN_10A_SOCKET": {
+    "desc": "肖邦10A插座",
+    "SwitchOpt": {
+      "desc": "开关",
+      "request": [
+        {
+          "desc": "参数:开/关",
+          "key": "on",
+          "type": "bool"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetDevicePower": {
+      "desc": "查询实时功率",
+      "request": [],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetPowerByDay": {
+      "desc": "按日查询电量",
+      "request": [
+        {
+          "desc": "参数:开始日期",
+          "key": "beginDay",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM-dd",
+            "range": "[-10,0,1]"
+          }
+        },
+        {
+          "desc": "参数:结束日期",
+          "key": "endDay",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM-dd",
+            "range": "[0,0,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetPowerByMonth": {
+      "desc": "按月查询电量",
+      "request": [
+        {
+          "desc": "参数:开始月份",
+          "key": "beginMonth",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM",
+            "range": "[-1,0,1]"
+          }
+        },
+        {
+          "desc": "参数:结束月份",
+          "key": "endMonth",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM",
+            "range": "[0,0,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetPowerByYear": {
+      "desc": "按年查询电量",
+      "request": [
+        {
+          "desc": "参数:开始年份",
+          "key": "beginYear",
+          "type": "date",
+          "date": {
+            "format": "yyyy",
+            "range": "[-1,0,1]"
+          }
+        },
+        {
+          "desc": "参数:结束年份",
+          "key": "endYear",
+          "type": "date",
+          "date": {
+            "format": "yyyy",
+            "range": "[0,0,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetSocketRunArgs": {
+      "desc": "查询运行参数",
+      "request": [],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "SetSocketRunArgs": {
+      "desc": "设置运行参数",
+      "request": [
+        {
+          "desc": "参数:断电记忆",
+          "key": "powerOnResume",
+          "type": "bool"
+        },
+        {
+          "desc": "参数:超载断电",
+          "key": "overloadAutoOff",
+          "type": "bool"
+        },
+        {
+          "desc": "超载功率阀值",
+          "key": "overloadThreshold",
+          "type": "range",
+          "range": [
+            5,
+            2200,
+            1
+          ]
+        },
+        {
+          "desc": "负载检测功率阀值",
+          "key": "loadThreshold",
+          "type": "range",
+          "range": [
+            0.5,
+            5,
+            0.1
+          ]
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  },
+  "KONKE_ZIGBEE_CHOPIN_16A_SOCKET": {
+    "desc": "肖邦16A插座",
+    "SwitchOpt": {
+      "desc": "开关",
+      "request": [
+        {
+          "desc": "参数:开/关",
+          "key": "on",
+          "type": "bool"
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetDevicePower": {
+      "desc": "查询实时功率",
+      "request": [],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetPowerByDay": {
+      "desc": "按日查询电量",
+      "request": [
+        {
+          "desc": "参数:开始日期",
+          "key": "beginDay",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM-dd",
+            "range": "[-10,0,1]"
+          }
+        },
+        {
+          "desc": "参数:结束日期",
+          "key": "endDay",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM-dd",
+            "range": "[0,0,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetPowerByMonth": {
+      "desc": "按月查询电量",
+      "request": [
+        {
+          "desc": "参数:开始月份",
+          "key": "beginMonth",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM",
+            "range": "[-1,0,1]"
+          }
+        },
+        {
+          "desc": "参数:结束月份",
+          "key": "endMonth",
+          "type": "date",
+          "date": {
+            "format": "yyyy-MM",
+            "range": "[0,0,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetPowerByYear": {
+      "desc": "按年查询电量",
+      "request": [
+        {
+          "desc": "参数:开始年份",
+          "key": "beginYear",
+          "type": "date",
+          "date": {
+            "format": "yyyy",
+            "range": "[-1,0,1]"
+          }
+        },
+        {
+          "desc": "参数:结束年份",
+          "key": "endYear",
+          "type": "date",
+          "date": {
+            "format": "yyyy",
+            "range": "[0,0,1]"
+          }
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "GetSocketRunArgs": {
+      "desc": "查询运行参数",
+      "request": [],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    },
+    "SetSocketRunArgs": {
+      "desc": "设置运行参数",
+      "request": [
+        {
+          "desc": "参数:断电记忆",
+          "key": "powerOnResume",
+          "type": "bool"
+        },
+        {
+          "desc": "参数:超载断电",
+          "key": "overloadAutoOff",
+          "type": "bool"
+        },
+        {
+          "desc": "超载功率阀值",
+          "key": "overloadThreshold",
+          "type": "range",
+          "range": [
+            5,
+            3600,
+            1
+          ]
+        },
+        {
+          "desc": "负载检测功率阀值",
+          "key": "loadThreshold",
+          "type": "range",
+          "range": [
+            0.5,
+            50,
+            0.1
+          ]
+        }
+      ],
+      "response": [
+        {
+          "desc": "返回值:是否成功",
+          "key": "success",
+          "type": "bool",
+          "bool": true
+        },
+        {
+          "desc": "返回值:错误码",
+          "key": "errorCode",
+          "type": "int",
+          "int": 0
+        }
+      ]
+    }
+  }
+}

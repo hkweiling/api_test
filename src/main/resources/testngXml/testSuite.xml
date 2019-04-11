@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="单个主机设备状态查询" parallel="classes">
+    <listeners>
+        <listener class-name="com.rest.autotest.listener.FailedRetryListener"/>
+    </listeners>
+    <test verbose="0" name="设备状态查询接口测试">
+        <classes>
+            <class name="com.rest.autotest.http.GetDeviceStatus"/>
+        </classes>
+    </test>
+</suite>
