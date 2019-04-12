@@ -5,8 +5,8 @@ import com.rest.autotest.data.DataBuilder;
 import io.restassured.response.Response;
 import org.apache.log4j.Logger;
 
-import static com.rest.autotest.reports.TestStep.requestAndRespondBody;
-import static com.rest.autotest.reports.TestStep.assertRespond;
+import static com.rest.autotest.reports.TestAttachment.requestAndRespondBody;
+import static com.rest.autotest.reports.TestAttachment.assertRespond;
 
 import java.util.Map;
 
@@ -25,21 +25,20 @@ public class OptResponseAsserts {
         }
         requestAndRespondBody(url,JSONObject.toJSONString(arg),response.asString());
 
-        //log.info(response.asString());
         JSONObject reponseJson = JSONObject.parseObject(response.asString());
         boolean successbool=(reponseJson.getBoolean("success")==expres.getBoolean("success"));
         boolean errorCodebool=(reponseJson.getInteger("errorCode").equals(expres.getInteger("errorCode")));
         if(response.asString()==null){
             assertResult="操作失败->响应为空";
-            log.info("操作失败->响应为空");
+//            log.info("操作失败->响应为空");
         }
         if(successbool&errorCodebool){
             assertResult="操作成功->响应与预期一致";
-            log.info("操作成功->响应与预期一致"+":"+reponseJson+expres);
+//            log.info("操作成功->响应与预期一致"+":"+reponseJson+expres);
         }
         else{
             assertResult="操作失败->响应与预期不一致";
-            log.info("操作失败->响应与预期不一致"+":"+reponseJson+expres);
+//            log.info("操作失败->响应与预期不一致"+":"+reponseJson+expres);
         }
         assertRespond(assertResult);
     }

@@ -5,37 +5,30 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.rest.autotest.common.PropertieyConfig;
 import com.rest.autotest.common.envSet;
-import io.restassured.http.Header;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
-import java.util.List;
-
 import static io.restassured.RestAssured.given;
 
 
 public class GetCcuList {
 
     private Logger log = Logger.getLogger(GetCcuList.class);
-    private static envSet envset=new envSet();
 
 
-    private static String geturl(){
-        String baseurl=envset.setbaseurl();
-        String url=baseurl+"/cculist";
-        return url;
-    }
-
-    private static List<Header> getheader() {
-        return envset.setheader();
+    private static void seturl(){
+        String url="";
+        String baseurl=envSet.setbaseurl();
+        url=baseurl+"/cculist";
+        RestAssured.baseURI=url;
     }
 
     private static JSONObject getdata(){
         String datastr="{\"pageNo\":0,\"pageSize\":10}";
-        JSONObject data=JSONObject.parseObject(datastr);
-        return data;
+        return JSONObject.parseObject(datastr);
     }
 
     private static String getccuname(){
@@ -49,23 +42,20 @@ public class GetCcuList {
         return ccuname;
     }
 
-    public  static String GetCcuList(){
+    public  static String getCcuList(){
         /**
          * @description: 获取当前开发者账号的主机列表
          * @param: []
          * @return: java.lang.String
          */
         Response response = null;
-        String url=geturl();
-        List<Header> helist=getheader();
-        JSONObject arg=getdata();
+        seturl();
         response = given()
                 .relaxedHTTPSValidation()
                 .contentType("application/json;charset=UTF-8")
-                .header(helist.get(0))
-                .header(helist.get(1))
-                .body(arg)
-                .post(url);
+                .headers(envSet.setheaders())
+                .body(getdata())
+                .post();
         return response.asString();
     }
 
@@ -85,9 +75,7 @@ public class GetCcuList {
             if(deviceid.equals(ccuname)){
                 ccuid=Jdata.getString("id");
             }
-
         }
-
         return ccuid;
     }
 

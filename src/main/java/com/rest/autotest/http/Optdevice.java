@@ -5,43 +5,27 @@ import com.rest.autotest.asserts.OptResponseAsserts;
 import com.rest.autotest.common.envSet;
 
 import com.rest.autotest.data.DataProviders;
-import io.restassured.http.Header;
+import com.rest.autotest.reports.TestStep;
+import io.qameta.allure.Step;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.allure.annotations.Title;
-import ru.yandex.qatools.allure.annotations.Description;
-import java.util.List;
-import static io.restassured.RestAssured.given;
 
 
-@Title("设备控制")
-@Description("灯光窗帘插座操作")
+@Title("单个主机下设备操作")
+@Listeners
 public class Optdevice{
 
-//    private static envSet envset=new envSet();
-
-    private static String geturl(String ccuid) {
-        String url=null;
-        String baseurl=envSet.setbaseurl();
-        url=baseurl+"/ccu/"+ccuid+"/dev/";
-        return url;
-    }
-
-    private static List<Header> getheader() {
-        return envSet.setheader();
-    }
-
     private static String getccuid(){
-        String ccuid=null;
-        String cculist=GetCcuList.GetCcuList();
-        ccuid=GetCcuList.GetCcuId(cculist);
-        return ccuid;
+        String cculist=GetCcuList.getCcuList();
+        return GetCcuList.GetCcuId(cculist);
     }
 
-    @Test(dataProvider = "dataprovider", dataProviderClass = DataProviders.class)
-    @Title("单个主机设备控制")
-    @Step("执行用例")
+
+    @Test(dataProvider = "dataprovider", dataProviderClass = DataProviders.class,description = "设备操作",groups = "OptDevice")
     public void optDevice(int id,JSONObject arg)  {
         /**
          * @description: 控制某台主机下的设备
@@ -50,17 +34,21 @@ public class Optdevice{
          */
 
         Response response = null;
-        String ccuid = getccuid();
-        String baseurl=geturl(ccuid);
-        String url=baseurl+id+"/opt";
-        List<Header> helist=getheader();
-        response = given()
-                .relaxedHTTPSValidation()
-                .contentType("application/json;charset=UTF-8")
-                .header(helist.get(0))
-                .header(helist.get(1))
-                .body(arg)
-                .post(url);
+        seturl(id);
+        response= TestStep.sendrequest(arg);
+        assertres(response,id,RestAssured.baseURI,arg);
+    }
+
+    @Step("URL拼接")
+    public static void seturl(int id){
+        String url="";
+        String baseurl=envSet.setbaseurl();
+        url=baseurl+"/ccu/"+getccuid()+"/dev/"+id+"/opt";
+        RestAssured.baseURI=url;
+    }
+
+    @Step("响应结果断言")
+    public static void assertres(Response response,int id,String url,JSONObject arg){
         OptResponseAsserts.optResponseAsserts(response,id,url,arg);
     }
 }

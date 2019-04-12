@@ -5,18 +5,18 @@ import com.alibaba.fastjson.JSONObject;
 import com.rest.autotest.asserts.StatusResponseAsserts;
 import com.rest.autotest.common.envSet;
 import com.rest.autotest.data.DataProviders;
-import io.restassured.http.Header;
+import com.rest.autotest.reports.TestStep;
+import io.qameta.allure.Step;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import ru.yandex.qatools.allure.annotations.Description;
-import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.allure.annotations.Title;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import static io.restassured.RestAssured.given;
 
 /**
  * @description:
@@ -24,25 +24,11 @@ import static io.restassured.RestAssured.given;
  * @time: 2019/3/29 14:04
  */
 
-@Title("查询设备状态")
-@Description("查询多个主机下设备状态")
+@Title("查询多个个主机下设备状态")
+@Listeners
 public class GetDeviceStatusForCcus {
 
-    private static String geturl(String ccuid) {
-        String url=null;
-        String baseurl=envSet.setbaseurl();
-        url=baseurl+"/ccu/"+ccuid+"/deviceStatus";
-        return url;
-    }
-
-    private static List<Header> getheader() {
-        return envSet.setheader();
-    }
-
-
-    @Test(dataProvider = "dataprovider", dataProviderClass = DataProviders.class)
-    @Title("多个主机设备状态查询")
-    @Step("执行用例")
+    @Test(dataProvider = "dataprovider", dataProviderClass = DataProviders.class,description = "查询设备状态",groups = "GetDeviceStatus")
     public static void getDeviceStatusForCcus(String ccuid, List<Map<Integer,String>> arglist){
         /**
          * @description: 查询当前开发者账号下所有主机设备状态
@@ -50,45 +36,29 @@ public class GetDeviceStatusForCcus {
          * @return: void
          */
         Response response = null;
-        String url = seturl(ccuid);
+        seturl(ccuid);
         for(Map<Integer,String> arg:arglist){
             Iterator<Map.Entry<Integer,String>> iterator= arg.entrySet().iterator();
             while (iterator.hasNext()){
                 Map.Entry<Integer,String> entry = iterator.next();
-                JSONObject body=setbody(entry.getKey(),entry.getValue());
-                response = sendrequest(body,url);
-                assertres(response,entry.getKey(),url);
+                JSONObject body= TestStep.setbody(entry.getKey(),entry.getValue());
+                response = TestStep.sendrequest(body);
+                assertres(response,entry.getKey(),RestAssured.baseURI);
             }
         }
 
     }
 
-    @io.qameta.allure.Step("URL拼接")
-    public static String seturl(String ccuid){
-        return geturl(ccuid);
+    @Step("URL拼接")
+    public static void seturl(String ccuid){
+        String url="";
+        String baseurl=envSet.setbaseurl();
+        url=baseurl+"/ccu/"+ccuid+"/deviceStatus";
+        RestAssured.baseURI=url;
     }
 
-    @io.qameta.allure.Step("请求body构造")
-    public static JSONObject setbody(int id,String type){
-        String argstr="{\"id\": "+id+",\"type\":\""+type+"\"}";
-        return JSONObject.parseObject(argstr);
-    }
 
-    @io.qameta.allure.Step("请求发送")
-    public static Response sendrequest(JSONObject body,String url){
-        Response response=null;
-        List<Header> helist=getheader();
-        response = given()
-                .relaxedHTTPSValidation()
-                .contentType("application/json;charset=UTF-8")
-                .header(helist.get(0))
-                .header(helist.get(1))
-                .body(body)
-                .post(url);
-        return response;
-    }
-
-    @io.qameta.allure.Step("结果断言")
+    @Step("结果断言")
     public static void assertres(Response response,int id,String url){
         StatusResponseAsserts.statusResponseAsserts(response,id,url);
     }

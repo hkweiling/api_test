@@ -6,6 +6,7 @@ import com.rest.autotest.model.Device;
 import com.rest.autotest.utils.FileUtil;
 import com.rest.autotest.utils.JsonUtil;
 import com.rest.autotest.common.envSet;
+import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.response.Response;
 import org.apache.log4j.Logger;
@@ -18,29 +19,24 @@ import static io.restassured.RestAssured.given;
 
 public class GetDeviceList extends TemplateUtil{
     private Logger log = Logger.getLogger(GetDeviceList.class);
-    private static envSet envset=new envSet();
     private static final String TEMPLATE = FileUtil.loadResourceFile("模板.json");
     private static final JSONObject TEMPLATE_JO = JSONObject.parseObject(TEMPLATE);
 
-    private static String geturl(String ccuid) {
-        String baseurl=envset.setbaseurl();
-        String url=baseurl+"/ccu/"+ccuid+"/deviceList";
-        return url;
-    }
-
-    private static List<Header> getheader() {
-        return envset.setheader();
+    private static void geturl(String ccuid) {
+        String url="";
+        String baseurl=envSet.setbaseurl();
+        url=baseurl+"/ccu/"+ccuid+"/deviceList";
+        RestAssured.baseURI=url;
     }
 
     private static String getccuid(){
-        String cculist=GetCcuList.GetCcuList();
-        String ccuid=GetCcuList.GetCcuId(cculist);
-        return ccuid;
+        String cculist=GetCcuList.getCcuList();
+        return GetCcuList.GetCcuId(cculist);
     }
 
-    public static Map<String,String> getccuidmap(){
-        String cculist=GetCcuList.GetCcuList();
+    private static Map<String,String> getccuidmap(){
         Map<String,String> ccuidmap=new HashMap<>();
+        String cculist=GetCcuList.getCcuList();
         ccuidmap=GetCcuList.GetCcuIdList(cculist);
         return ccuidmap;
     }
@@ -52,16 +48,12 @@ public class GetDeviceList extends TemplateUtil{
          * @return: java.lang.String
          */
         Response response = null;
-        String ccuid=getccuid();
-        String url=geturl(ccuid);
-        List<Header> helist=getheader();
+        geturl(getccuid());
         response = given()
                 .relaxedHTTPSValidation()
                 .contentType("application/json;charset=UTF-8")
-                .header(helist.get(0))
-                .header(helist.get(1))
-                .get(url);
-            //System.out.println(response.asString());
+                .headers(envSet.setheaders())
+                .get();
         return response.asString();
     }
 
@@ -92,22 +84,19 @@ public class GetDeviceList extends TemplateUtil{
          * @return: java.util.LinkedHashMap<java.lang.String,java.lang.String>
          */
         Response response = null;
-        List<Header> helist=getheader();
         Map<String,String> ccuidmap=getccuidmap();
         Map<String,String> resmap=new HashMap<>();
         Iterator<Map.Entry<String,String>> iterator= ccuidmap.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<String,String> entry = iterator.next();
-            String ccuid = entry.getValue();
-            String url=geturl(ccuid);
+            geturl(entry.getValue());
             response = given()
                     .relaxedHTTPSValidation()
                     .contentType("application/json;charset=UTF-8")
-                    .header(helist.get(0))
-                    .header(helist.get(1))
-                    .get(url);
+                    .headers(envSet.setheaders())
+                    .get();
             String res=response.asString();
-            resmap.put(ccuid,res);
+            resmap.put(entry.getValue(),res);
         }
 
 

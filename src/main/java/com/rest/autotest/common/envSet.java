@@ -37,19 +37,17 @@ public class envSet {
     }
 
 
-    public static List<Header> setheader(){
-        List<Header> list=new ArrayList<>();
+    public static Map<String,String> setheaders(){
+        Map<String,String> headers=new HashMap<>();
         try {
             String appIdValue = property.getValue("appId", "request.properties");
             String appKeyValue = property.getValue("appKey", "request.properties");
-            Header header1=new Header("appId", appIdValue);
-            Header header2=new Header("appKey", appKeyValue);
-            list.add(header1);
-            list.add(header2);
+            headers.put("appId",appIdValue);
+            headers.put("appKey",appKeyValue);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return list;
+        return headers;
     }
 
     @AfterClass

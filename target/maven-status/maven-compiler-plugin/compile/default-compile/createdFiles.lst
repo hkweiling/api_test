@@ -27,5 +27,6 @@ com\rest\autotest\utils\WritePropertiesUtil.class
 com\rest\autotest\data\DataBuilder$1.class
 com\rest\autotest\http\GetDeviceStatusForCcus.class
 com\rest\autotest\model\TestCase.class
+com\rest\autotest\reports\TestAttachment.class
 com\rest\autotest\data\DataProviders.class
 com\rest\autotest\utils\FileUtil.class

@@ -15,7 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!--外部传参-->
-        <xmlFileName>testSuite.xml</xmlFileName>
+        <xmlFileName></xmlFileName>
     </properties>
 
     <dependencies>
@@ -102,20 +102,17 @@
                 <configuration>
                     <suiteXmlFiles>
                         <!--该文件位于工程根目录时，直接填写名字，其它位置要加上路径-->
-                        <!--suiteXmlFile>src/main/resources/testngXml/${xmlFileName}</suiteXmlFile-->
-                        <suiteXmlFile>${project.basedir}/target/classes/testngXml/${xmlFileName}</suiteXmlFile>
+                        <suiteXmlFile>src/main/resources/${xmlFileName}</suiteXmlFile>
+                        <!--<suiteXmlFile>${project.basedir}/target/classes/testngXml/${xmlFileName}</suiteXmlFile>-->
                     </suiteXmlFiles>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <argLine>-Dfile.encoding=UTF-8</argLine>
-                    <!--JVM参数设置-->
-                    <argLine>-Dfile.encoding=UTF-8 -Xmx1024m -XX:MaxPermSize=256m</argLine>
                     <!--生成allure-result的目录-->
                     <systemProperties>
                         <property>
                             <name>allure.results.directory</name>
-                            <value>${project.basedir}/target/allure-results</value>
+                            <value>./target/allure-results</value>
                         </property>
                     </systemProperties>
                 </configuration>
