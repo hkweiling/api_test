@@ -11,7 +11,6 @@ E:\work\autotest\src\main\java\com\rest\autotest\model\TestCase.java
 E:\work\autotest\src\main\java\com\rest\autotest\enums\TestMode.java
 E:\work\autotest\src\main\java\com\rest\autotest\asserts\OptResponseAsserts.java
 E:\work\autotest\src\main\java\com\rest\autotest\reports\TestAttachment.java
-E:\work\autotest\src\main\java\com\rest\autotest\common\SetUpTearDown.java
 E:\work\autotest\src\main\java\com\rest\autotest\listener\FailedRetry.java
 E:\work\autotest\src\main\java\com\rest\autotest\asserts\StatusResponseAsserts.java
 E:\work\autotest\src\main\java\com\rest\autotest\data\DataBuilder.java

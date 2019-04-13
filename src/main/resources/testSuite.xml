@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="接口自动化测试" parallel="classes">
+<suite name="接口自动化测试">
     <listeners>
         <listener class-name="com.rest.autotest.listener.FailedRetryListener"/>
     </listeners>
 
-    <test verbose="0" name="设备状态查询">
-        <groups>
-            <run>
-                <exclude name="OptDevice"/>
-                <include name="GetDeviceStatus"/>
-            </run>
-        </groups>
+    <test verbose="2" preserve-order="true" name="设备状态查询">
         <classes>
-            <class name="com.rest.autotest.http.GetDeviceStatus"/>
-            <!--<class name="com.rest.autotest.http.GetDeviceStatusForCcus"/>-->
+            <class name="com.rest.autotest.http.GetDeviceStatus">
+                <methods>
+                    <exclude name="getDeviceStatus"/>
+                </methods>
+            </class>
+            <class name="com.rest.autotest.http.GetDeviceStatusForCcus">
+                <methods>
+                    <include name="getDeviceStatusForCcus"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test verbose="2" preserve-order="true" name="设备操作">
+        <classes>
+            <class name="com.rest.autotest.http.OptDeviceForCcus">
+                <methods>
+                    <exclude name="optDeviceForCcus"/>
+                </methods>
+            </class>
+            <class name="com.rest.autotest.http.Optdevice">
+                <methods>
+                    <exclude name="optDevice"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

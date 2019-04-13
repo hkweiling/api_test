@@ -8,6 +8,7 @@ import com.rest.autotest.reports.TestStep;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.apache.log4j.Logger;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Title;
@@ -17,8 +18,11 @@ import java.util.List;
 @Title("多个主机下设备操作")
 @Listeners
 public class OptDeviceForCcus {
+    private static Logger log = Logger.getLogger(GetDeviceList.class);
+    private static String baseurl=envSet.setbaseurl();
 
-    @Test(dataProvider = "dataprovider", dataProviderClass = DataProviders.class,description = "设备操作",groups = "OptDevice")
+    @Title("设备操作")
+    @Test(dataProvider = "dataprovider", dataProviderClass = DataProviders.class,description = "设备操作")
     public void optDeviceForCcus(String ccuid, List<JSONObject> ccudata) {
         /**
          * @description: 控制当前开发者账号下所有主机设备
@@ -38,7 +42,6 @@ public class OptDeviceForCcus {
     @Step("URL拼接")
     public static void seturl(String ccuid,int id){
         String url="";
-        String baseurl=envSet.setbaseurl();
         url=baseurl+"/ccu/"+ccuid+"/dev/"+id+"/opt";
         RestAssured.baseURI=url;
     }

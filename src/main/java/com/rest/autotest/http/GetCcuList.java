@@ -16,12 +16,11 @@ import static io.restassured.RestAssured.given;
 
 public class GetCcuList {
 
-    private Logger log = Logger.getLogger(GetCcuList.class);
-
+    private static Logger log = Logger.getLogger(GetCcuList.class);
+    private static String baseurl=envSet.setbaseurl();
 
     private static void seturl(){
         String url="";
-        String baseurl=envSet.setbaseurl();
         url=baseurl+"/cculist";
         RestAssured.baseURI=url;
     }
@@ -59,14 +58,15 @@ public class GetCcuList {
         return response.asString();
     }
 
-    public static String GetCcuId(String res){
+    public static String GetCcuId(){
         /**
          * @description: 获取某台主机的ccuId
          * @param: [res]
          * @return: java.lang.String
          */
-        String ccuid=null;
+        String ccuid="";
         String ccuname=getccuname();
+        String res=getCcuList();
         JSONObject Jres=JSONObject.parseObject(res);
         JSONArray Ares=Jres.getJSONArray("data");
         for(int i=0;i<Ares.size();i++){
@@ -79,13 +79,14 @@ public class GetCcuList {
         return ccuid;
     }
 
-    public static LinkedHashMap<String,String> GetCcuIdList(String res){
+    public static LinkedHashMap<String,String> GetCcuIdList(){
         /**
          * @description: 获取当前开发者账号下所有主机ccuId列表
          * @param: [res]
          * @return: java.util.LinkedHashMap<java.lang.String,java.lang.String>
          */
         LinkedHashMap<String,String> ccuidmap=new LinkedHashMap<>();
+        String res=getCcuList();
         JSONObject Jres=JSONObject.parseObject(res);
         JSONArray Ares=Jres.getJSONArray("data");
         for(int i=0;i<Ares.size();i++){

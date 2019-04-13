@@ -8,18 +8,17 @@ import io.qameta.allure.Attachment;
  */
 public class TestAttachment {
 
-    public static void requestAndRespondBody(String URL, String Body,String Respond){
+    public static void requestAndRespondBody(String URL, JSONObject Body,String Respond){
         String request=requestBody(URL,Body);
         String response=respondBody(Respond);
     }
 
     @Attachment(value = "请求报文", type = "text/plain")
-    private static String requestBody(String URL, String body) {
+    private static String requestBody(String URL, JSONObject body) {
         String str=null;
         //格式化json串
         boolean prettyFormat = true; //格式化输出
-        JSONObject jsonObject = JSONObject.parseObject(body);
-        str = JSONObject.toJSONString(jsonObject,prettyFormat);
+        str = JSONObject.toJSONString(body,prettyFormat);
 
         //报告展现请求报文
         return URL+"\n"+str;
@@ -32,7 +31,6 @@ public class TestAttachment {
         boolean prettyFormat = true; //格式化输出
         JSONObject jsonObject = JSONObject.parseObject(respond);
         str = JSONObject.toJSONString(jsonObject,prettyFormat);
-
         //报告展现响应报文
         return str;
     }

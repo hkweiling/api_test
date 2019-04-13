@@ -21,23 +21,19 @@ public class GetDeviceList extends TemplateUtil{
     private Logger log = Logger.getLogger(GetDeviceList.class);
     private static final String TEMPLATE = FileUtil.loadResourceFile("模板.json");
     private static final JSONObject TEMPLATE_JO = JSONObject.parseObject(TEMPLATE);
+    private static String baseurl=envSet.setbaseurl();
+    private static String uniccuid=GetCcuList.GetCcuId();
 
     private static void geturl(String ccuid) {
         String url="";
-        String baseurl=envSet.setbaseurl();
         url=baseurl+"/ccu/"+ccuid+"/deviceList";
         RestAssured.baseURI=url;
     }
 
-    private static String getccuid(){
-        String cculist=GetCcuList.getCcuList();
-        return GetCcuList.GetCcuId(cculist);
-    }
 
     private static Map<String,String> getccuidmap(){
         Map<String,String> ccuidmap=new HashMap<>();
-        String cculist=GetCcuList.getCcuList();
-        ccuidmap=GetCcuList.GetCcuIdList(cculist);
+        ccuidmap=GetCcuList.GetCcuIdList();
         return ccuidmap;
     }
 
@@ -48,7 +44,7 @@ public class GetDeviceList extends TemplateUtil{
          * @return: java.lang.String
          */
         Response response = null;
-        geturl(getccuid());
+        geturl(uniccuid);
         response = given()
                 .relaxedHTTPSValidation()
                 .contentType("application/json;charset=UTF-8")

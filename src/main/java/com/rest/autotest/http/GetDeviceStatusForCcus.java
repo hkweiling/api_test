@@ -9,13 +9,10 @@ import com.rest.autotest.reports.TestStep;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.apache.log4j.Logger;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Title;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -24,43 +21,37 @@ import java.util.Map;
  * @time: 2019/3/29 14:04
  */
 
-@Title("查询多个个主机下设备状态")
+@Title("查询多个主机下设备状态")
 @Listeners
 public class GetDeviceStatusForCcus {
+    private static Logger log = Logger.getLogger(GetDeviceList.class);
+    private static String baseurl=envSet.setbaseurl();
 
-    @Test(dataProvider = "dataprovider", dataProviderClass = DataProviders.class,description = "查询设备状态",groups = "GetDeviceStatus")
-    public static void getDeviceStatusForCcus(String ccuid, List<Map<Integer,String>> arglist){
+    @Title("查询设备状态")
+    @Test(dataProvider = "dataprovider", dataProviderClass = DataProviders.class,description = "查询设备状态")
+    public static void getDeviceStatusForCcus(String ccuid, JSONObject arg){
         /**
          * @description: 查询当前开发者账号下所有主机设备状态
-         * @param: [ccuid, arglist]
+         * @param: [ccuid,arglist]
          * @return: void
          */
         Response response = null;
         seturl(ccuid);
-        for(Map<Integer,String> arg:arglist){
-            Iterator<Map.Entry<Integer,String>> iterator= arg.entrySet().iterator();
-            while (iterator.hasNext()){
-                Map.Entry<Integer,String> entry = iterator.next();
-                JSONObject body= TestStep.setbody(entry.getKey(),entry.getValue());
-                response = TestStep.sendrequest(body);
-                assertres(response,entry.getKey(),RestAssured.baseURI);
-            }
-        }
-
+        response = TestStep.sendrequest(arg);
+        assertres(response,arg,RestAssured.baseURI);
     }
 
     @Step("URL拼接")
     public static void seturl(String ccuid){
         String url="";
-        String baseurl=envSet.setbaseurl();
         url=baseurl+"/ccu/"+ccuid+"/deviceStatus";
         RestAssured.baseURI=url;
     }
 
 
     @Step("结果断言")
-    public static void assertres(Response response,int id,String url){
-        StatusResponseAsserts.statusResponseAsserts(response,id,url);
+    public static void assertres(Response response,JSONObject body,String url){
+        StatusResponseAsserts.statusResponseAsserts(response,body,url);
     }
 
 }

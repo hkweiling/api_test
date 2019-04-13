@@ -1,6 +1,5 @@
 package com.rest.autotest.utils;
 
-import com.rest.autotest.utils.ConstVariable;
 
 import java.io.*;
 import java.util.Iterator;

@@ -23,7 +23,7 @@ public class OptResponseAsserts {
                 expres = bodyJson.getJSONObject("res");
             }
         }
-        requestAndRespondBody(url,JSONObject.toJSONString(arg),response.asString());
+        requestAndRespondBody(url,arg,response.asString());
 
         JSONObject reponseJson = JSONObject.parseObject(response.asString());
         boolean successbool=(reponseJson.getBoolean("success")==expres.getBoolean("success"));

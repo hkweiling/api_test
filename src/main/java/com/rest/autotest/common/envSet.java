@@ -2,19 +2,16 @@ package com.rest.autotest.common;
 
 import com.alibaba.fastjson.JSONObject;
 import com.rest.autotest.data.DataBuilder;
-import io.restassured.http.Header;
+import com.rest.autotest.utils.WritePropertiesUtil;
 import org.apache.log4j.Logger;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import static com.rest.autotest.utils.WritePropertiesUtil.writePropertiesFile;
+
 
 
 public class envSet {
@@ -22,7 +19,7 @@ public class envSet {
     static Logger log = Logger.getLogger(envSet.class);
 
 
-    public static String setbaseurl(){
+    public static String setbaseurl() throws NullPointerException{
         String url = null;
         try {
             String system = "env.properties";    //环境由filter配置
@@ -30,21 +27,21 @@ public class envSet {
             String basepath = property.getValue("basePath", system);
             int port = Integer.parseInt(property.getValue("port", system));
             url=baseURI+":"+port+basepath;
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return url;
     }
 
 
-    public static Map<String,String> setheaders(){
+    public static Map<String,String> setheaders() throws NullPointerException{
         Map<String,String> headers=new HashMap<>();
         try {
             String appIdValue = property.getValue("appId", "request.properties");
             String appKeyValue = property.getValue("appKey", "request.properties");
             headers.put("appId",appIdValue);
             headers.put("appKey",appKeyValue);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return headers;
@@ -74,7 +71,7 @@ public class envSet {
         String baseURI = property.getValue("baseURI", system);
         int port = Integer.parseInt(property.getValue("port", system));
         data.put("baseURI", baseURI+":"+port);
-        writePropertiesFile(data);
+        WritePropertiesUtil.writePropertiesFile(data);
     }
 
 }

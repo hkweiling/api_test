@@ -16,31 +16,29 @@ public class DataProviders{
 
         if(methodName.equals("optDeviceForCcus")){
             Map<String,List<JSONObject>> datamap=DataBuilder.optdatabuilderforccus();
+            int size=0;
+            for(List<JSONObject> data:datamap.values()){
+                size+=data.size();
+            }
+            obs = new Object[size][2];
             Iterator<Map.Entry<String,List<JSONObject>>> it=datamap.entrySet().iterator();
             int j=0;
             while (it.hasNext()){
-                List<JSONObject> ccudatas=new ArrayList<>();
                 Map.Entry<String,List<JSONObject>> entry = it.next();
                 String ccuid = entry.getKey();
                 List<JSONObject> datalist=entry.getValue();
                 for(JSONObject data : datalist) {
-                    JSONObject ccudata=new JSONObject();
                     JSONObject arg = data.getJSONObject("arg");
-                    int id = data.getInteger("id");
-                    ccudata.put("id",id);
-                    ccudata.put("arg",arg);
-                    ccudatas.add(ccudata);
+                    obs[j][0] = ccuid;
+                    obs[j][1] = arg;
+                    j++;
                 }
-
-                obs = new Object[datamap.size()][2];
-                obs[j][0] = ccuid;
-                obs[j][1] = ccudatas;
-                j++;
             }
             datamap.clear();
         }
+
         else if(methodName.equals("optDevice")){
-            Map<String, JSONObject> data=DataBuilder.optdatabuilder();
+            Map<String,JSONObject> data=DataBuilder.optdatabuilder();
             obs = new Object[data.size()][2];
             int j=0;
             for(Map.Entry<String,JSONObject> entry : data.entrySet()){
@@ -57,25 +55,34 @@ public class DataProviders{
             List<Map<Integer,String>> data=DataBuilder.statusdatabuilder();
             obs = new Object[data.size()][2];
             int j=0;
-            for(int i=0;i<data.size();i++){
-                for(Map.Entry<Integer,String> entry:data.get(i).entrySet()){
+            for(Map<Integer,String> map:data){
+                for(Map.Entry<Integer,String> entry:map.entrySet()){
                     obs[j][0] =entry.getKey();
                     obs[j][1] =entry.getValue();
                     j++;
                 }
             }
+            data.clear();
         }
         else if(methodName.equals("getDeviceStatusForCcus")){
-            Map<String,List<Map<Integer,String>>> data=DataBuilder.statusdatabuilderforccus();
-            obs = new Object[data.size()][2];
-            int j=0;
-            Iterator<Map.Entry<String,List<Map<Integer,String>>>> iterator= data.entrySet().iterator();
-            while (iterator.hasNext()){
-                Map.Entry<String,List<Map<Integer,String>>> entry = iterator.next();
-                obs[j][0] = entry.getKey();
-                obs[j][1] = entry.getValue();
-                j++;
+            Map<String,List<JSONObject>> data=DataBuilder.statusdatabuilderforccus();
+            int size=0;
+            for(List<JSONObject> arg :data.values()){
+                size+=arg.size();
             }
+            obs = new Object[size][2];
+            int j=0;
+            Iterator<Map.Entry<String,List<JSONObject>>> iterator= data.entrySet().iterator();
+            while (iterator.hasNext()){
+                Map.Entry<String,List<JSONObject>> entry = iterator.next();
+                String ccuid=entry.getKey();
+                for(JSONObject map:entry.getValue()){
+                    obs[j][0] = ccuid;
+                    obs[j][1] = map;
+                    j++;
+                }
+            }
+            data.clear();
         }
         return obs;
     }

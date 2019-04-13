@@ -88,32 +88,7 @@ public class DataBuilder {
          */
         List<Map<Integer,String>> arglist=new ArrayList<>();
         String res=GetDeviceList.getdevicelist();
-        List<Device> devlist= JsonUtil.fromJson(res, new TypeToken<List<Device>>() {
-        }.getType());;
-        for(Device d:devlist) {
-            if (!(d.getType()).equals("UNKOWN")) {
-                Map<Integer,String> arg = new HashMap<>();
-                arg.put(d.getId(), d.getType());
-                arglist.add(arg);
-            }
-        }
-        return arglist;
-    }
-
-    public static Map<String,List<Map<Integer,String>>> statusdatabuilderforccus(){
-        /**
-         * @description:
-         * @param: []
-         * @return: java.util.Map<java.lang.String,java.util.List<java.util.Map<java.lang.Integer,java.lang.String>>>
-         */
-        Map<String,List<Map<Integer,String>>> ccusarglist=new HashMap<>();
-        Map<String,String> resmap=GetDeviceList.getdevicelistfromccus();
-        Iterator<Map.Entry<String,String>> iterator= resmap.entrySet().iterator();
-        while (iterator.hasNext()) {
-            List<Map<Integer,String>> arglist=new ArrayList<>();
-            Map.Entry<String, String> entry = iterator.next();
-            String ccuid = entry.getKey();
-            String res = entry.getValue();
+        if(!(res.contains("error_code"))){
             List<Device> devlist = JsonUtil.fromJson(res, new TypeToken<List<Device>>() {
             }.getType());
             for (Device d : devlist) {
@@ -123,7 +98,36 @@ public class DataBuilder {
                     arglist.add(arg);
                 }
             }
-            ccusarglist.put(ccuid,arglist);
+        }
+        return arglist;
+    }
+
+    public static Map<String,List<JSONObject>> statusdatabuilderforccus(){
+        /**
+         * @description:
+         * @param: []
+         * @return: java.util.Map<java.lang.String,java.util.List<java.util.Map<java.lang.Integer,java.lang.String>>>
+         */
+        Map<String,List<JSONObject>> ccusarglist=new HashMap<>();
+        Map<String,String> resmap=GetDeviceList.getdevicelistfromccus();
+        Iterator<Map.Entry<String,String>> iterator= resmap.entrySet().iterator();
+        while (iterator.hasNext()) {
+            List<JSONObject> arglist=new ArrayList<>();
+            Map.Entry<String, String> entry = iterator.next();
+            String ccuid = entry.getKey();
+            String res = entry.getValue();
+            if(!(res.contains("error_code"))) {
+                List<Device> devlist = JsonUtil.fromJson(res, new TypeToken<List<Device>>() {
+                }.getType());
+                for (Device d : devlist) {
+                    if (!(d.getType()).equals("UNKOWN")) {
+                        String argstr="{\"id\": "+d.getId()+",\"type\":\""+d.getType()+"\"}";
+                        JSONObject arg=JSONObject.parseObject(argstr);
+                        arglist.add(arg);
+                    }
+                }
+                ccusarglist.put(ccuid,arglist);
+            }
         }
 
         return ccusarglist;

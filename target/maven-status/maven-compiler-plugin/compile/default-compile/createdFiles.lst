@@ -14,7 +14,6 @@ com\rest\autotest\asserts\OptResponseAsserts.class
 com\rest\autotest\asserts\StatusResponseAsserts.class
 com\rest\autotest\listener\FailedRetryListener.class
 com\rest\autotest\utils\ConstVariable.class
-com\rest\autotest\common\SetUpTearDown.class
 com\rest\autotest\utils\JsonUtil.class
 com\rest\autotest\utils\test.class
 com\rest\autotest\http\GetDeviceList$1.class
